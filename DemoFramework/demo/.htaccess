@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteRule !\.(js|ico|gif|jpg|png|css|swf|htc|txt|doc|docx|xls|xlsx|pdf|htm|html|bmp|zip|flv|xml|ttf)|fckeditor(.*)|info.php$ index.php
+Options -indexes
