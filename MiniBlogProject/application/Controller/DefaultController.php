@@ -1,9 +1,9 @@
 <?php
 
-    class DefaultController extends BaseController {
+    class DefaultController extends BlogController {
 
         public function __construct() {
-            $this->loadDefaultView();
+//            $this->loadDefaultView();
         }
 
         public function loadDefaultView() {

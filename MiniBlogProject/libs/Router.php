@@ -30,15 +30,15 @@
 
             $filePath = realpath(CONTROLLERS_PATH . $controllerName . '.php');
             var_dump($filePath);
+            var_dump($controllerName);
+
             echo "</pre>";
 
             if($filePath != false) {
                 try {
 
                     $chosenController = new $controllerName();
-//                    var_dump($chosenController);
                     if (!empty($_GET['action'])) {
-
                         $chosenController->chosenView($_GET['action']);
                     } else {
                         $defaultController = new DefaultController();

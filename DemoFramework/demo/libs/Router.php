@@ -13,7 +13,7 @@ class Router{
     $defaultController = CONTROLLERS_PATH . 'DemoDefaultControllerDemo';
     echo "<pre>";
     var_dump($defaultController);
-    $class = ( (!empty($_GET['controller'])) ? ucfirst($_GET['controller']) : 'Default' ) . 'Controller';
+    $class = ( (!empty($_GET['controller'])) ? ucfirst($_GET['controller']) : 'DemoDefault' ) . 'Controller';
     $file = realpath(CONTROLLERS_PATH . $class . '.php');
     var_dump($file);
     print_r($_GET);

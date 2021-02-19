@@ -9,18 +9,13 @@
             $this->blogModel = new BlogModel();
         }
 
-        public function listBlogs(){
-            $results = $this->blogModel->getAllBlogs();
+        public function chosenView($innerView) {
+            $path = VIEW_PATH . $innerView . 'View.php';
+            require_once VIEW_PATH . "MenuView.html";
+            require_once $path;
 
-//            if(strlen($results['1']['content']) > 15 ) {
-//                $resultCut = substr($results['content'], 0, 15);
-//                $endPoint = strrpos($resultCut, ' ');
-//
-//                $results['content'] = $endPoint? substr($resultCut, 0, $endPoint) : substr($resultCut, 0);
-//                $results['content'] .= '...';
-//            }
-            return $results;
         }
+
         public function addBlogs(){
             $date = date('Y-m-d H:i:s');
             if (!empty($_POST)) {
@@ -38,27 +33,64 @@
                     ) {
                         header("Location: /MiniBlogProject");
                     }
-                } else {
-                    echo "Error";
                 }
             }
-
         }
 
         public function filterDate(){
-            if (!empty($_POST)) {
-                if (!empty($_POST['dateFrom']) && !empty($_POST['dateTo'])) {
-                    $result = $this->blogModel->filterByDate($_POST['dateFrom'], $_POST['dateTo']);
+            if(empty($_GET['dateFrom']) && empty($_GET['dateTo'])) {
+                $_GET['dateFrom'] = '';
+                $_GET['dateTo'] = '';
+            }
+            if(!empty($_GET['id'])) {
+                    $filterData = [
+                        'id' => $_GET['id'],
+                        'dateFrom' => $_GET['dateFrom'],
+                        'dateTo' => $_GET['dateTo']
+                    ];
+                    $result = $this->blogModel->filterByDate($filterData);
                     return $result;
+                } else {
+                    $filterData = [
+                        'dateFrom' => $_GET['dateFrom'],
+                        'dateTo' => $_GET['dateTo']
+                    ];
+                    $result = $this->blogModel->filterByDate($filterData);
+                    return $result;
+            }
+        }
+
+        public function updateBlogs(){
+            if (!empty($_GET['id']) && !empty($_POST)) {
+                if (
+                    !empty($_POST["newTitle"]) &&
+                    !empty($_POST["newContent"]) &&
+                    !empty($_POST["newCopyright"])
+                    ) {
+                        $id = $_GET['id'];
+                        $newTitle = $_POST['newTitle'];
+                        $newContent = $_POST['newContent'];
+                        $newDate = date('Y-m-d H:i:s');
+                        $newCopyright = $_POST['newCopyright'];
+                        $updateData = [
+                            "id" => $id,
+                            "newTitle" => $newTitle,
+                            "newContent" => $newContent,
+                            "newDate" => $newDate,
+                            "newCopyright" => $newCopyright
+                        ];
+                        if ($this->blogModel->updateBlogById($updateData)) {
+                            header("Location: /MiniBlogProject");
+                    }
                 }
             }
         }
     }
+//
+//    $chosenController->updateBlogs();
+//    $chosenController->addBlogs();
 
+    $blogInstance = new BlogController();
 
-    $create = new BlogController();
-    $create->addBlogs();
-    $list = new BlogController();
-    $resultOfListedBlogs = $list->listBlogs();
-    $filter = new BlogController();
-    $resultOfFilterDate = $filter->filterDate();
+    $blogInstance->addBlogs();
+    $blogInstance->updateBlogs();

@@ -1,11 +1,14 @@
 <?PHP
 $NUMPERPAGE = 5; // max. number of items to display per page
-$this_page =  "/MiniBlogProject";
+$this_page =  "?controller=Blog&action=HomePage";
 $data = new BlogController();
-$getResult = $data->listBlogs();
+$getResult = $data->filterDate();
 //$data = range(1, 150); // data array to be paginated
 $num_results = count($getResult);
+
 //print_r($getResult);
+//print_r($_POST['dateFrom']);
+//print_r($_POST['dateTo']);
 //var_dump($num_results);
 
 
@@ -19,14 +22,26 @@ $num_results = count($getResult);
   }
 
   // extra variables to append to navigation links (optional)
-  $linkextra = [];
-  if(isset($_GET['var1']) && $var1 = $_GET['var1']) { // repeat as needed for each extra variable
-      $linkextra[] = "var1=" . urlencode($var1);
+
+$linkextra = [];
+
+  if(!empty($_GET['dateTo']) || !empty($_GET['dateFrom'])) {
+      if(isset($_GET['dateFrom']) ) {
+          $dateFrom = $_GET['dateFrom']; // repeat as needed for each extra variable
+          $linkextra[] = "dateFrom=" . urlencode($dateFrom);
+      }
+      if(isset($_GET['dateTo']) ) {
+          $dateTo = $_GET['dateTo']; // repeat as needed for each extra variable
+          $linkextra[] = "dateTo=" . urlencode($dateTo);
+      }
   }
-  $linkextra = implode("&amp;", $linkextra);
-  if($linkextra) {
-      $linkextra .= "&amp;";
-  }
+
+$linkextra = implode("&amp;", $linkextra);
+if($linkextra) {
+    $linkextra .= "&amp;";
+}
+
+
 
   // build array containing links to all pages
   $tmp = [];
@@ -35,7 +50,7 @@ $num_results = count($getResult);
           // current page shown as bold, no link
           $tmp[] = "<b>{$p}</b>";
       } else {
-          $tmp[] = "<a href=\"{$this_page}?{$linkextra}page={$p}\">{$p}</a>";
+          $tmp[] = "<a href=\"{$this_page}&{$linkextra}page={$p}\">{$p}</a>";
       }
   }
 
@@ -52,7 +67,7 @@ $num_results = count($getResult);
 
       if($page > 1) {
           // display 'Prev' link
-          echo "<a href=\"{$this_page}?{$linkextra}page=" . ($page - 1) . "\">&laquo; Prev</a> | ";
+          echo "<a href=\"{$this_page}&{$linkextra}page=" . ($page - 1) . "\">&laquo; Prev</a> | ";
       } else {
           echo "Page ";
       }
@@ -70,7 +85,7 @@ $num_results = count($getResult);
 
       if($page <= $lastlink) {
           // display 'Next' link
-          echo " | <a href=\"{$this_page}?{$linkextra}page=" . ($page + 1) . "\">Next &raquo;</a>";
+          echo " | <a href=\"{$this_page}&{$linkextra}page=" . ($page + 1) . "\">Next &raquo;</a>";
       }
 
       echo "</p>\n\n";
@@ -95,8 +110,6 @@ foreach($it as $blogs) {
                 echo substr($blogs['content'], 0, 15); ?><span id='dots<?php $dotsCounter++; echo $dotsCounter; ?>'>...</span><span id='more<?php $moreCounter++; echo $moreCounter; ?>' class="more"><?php echo substr($blogs['content'], 15); ?></span>
                 <button onclick='moreLess<?php $funcCounter++; echo $funcCounter; ?>()' id='btn<?php $btnCounter++; echo $btnCounter; ?>' >Read more</button>
                 <?php
-//                      $idCounter++  ;
-
             } else {
                 echo $blogs['content'];
             }
@@ -104,5 +117,8 @@ foreach($it as $blogs) {
         </td>
         <td><?php echo $blogs['date']; ?></td>
         <td><?php echo $blogs['copyright']; ?></td>
+        <td>
+            <a href="?controller=Blog&action=UpdateBlog&id=<?php echo $blogs['id']; ?>">Update Blog</a>
+        </td>
     </tr>
 <?php } ?>
