@@ -50,6 +50,7 @@
                     ];
                     $result = $this->blogModel->filterByDate($filterData);
                     return $result;
+                    require_once VIEW_PATH . "UpdateBlogView.php";
                 } else {
                     $filterData = [
                         'dateFrom' => $_GET['dateFrom'],
@@ -86,9 +87,6 @@
             }
         }
     }
-//
-//    $chosenController->updateBlogs();
-//    $chosenController->addBlogs();
 
     $blogInstance = new BlogController();
 

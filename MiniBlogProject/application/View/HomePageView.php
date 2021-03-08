@@ -13,7 +13,7 @@
                 <th class='text text-center'>Blog Content</th>
                 <th class='text text-center'>Public Date</th>
                 <th class='text text-center'>Author</th>
-                <th class='text text-center'>Update</th>
+                <th class='text text-center'>Edit Blog</th>
             </tr>
             <?php require_once dirname(dirname(dirname(__FILE__))) . "/libs/pagination.php"; ?>
         </table>

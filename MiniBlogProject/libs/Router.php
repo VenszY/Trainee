@@ -1,6 +1,7 @@
 <?php
 
-    class Router {
+    class
+    Router {
 
 //        public function routeView(){
 //            $viewName = ((!empty($_GET['view'])) ? ucfirst($_GET['view']) : 'HomePage') . 'View';
@@ -54,4 +55,5 @@
                 $defaultController->loadDefaultView();
             }
         }
+
     }

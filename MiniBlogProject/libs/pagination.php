@@ -118,7 +118,8 @@ foreach($it as $blogs) {
         <td><?php echo $blogs['date']; ?></td>
         <td><?php echo $blogs['copyright']; ?></td>
         <td>
-            <a href="?controller=Blog&action=UpdateBlog&id=<?php echo $blogs['id']; ?>">Update Blog</a>
+            <a href="?controller=Blog&action=UpdateBlog&id=<?php echo $blogs['id']; ?>">Edit Blog</a>
         </td>
     </tr>
 <?php } ?>
+

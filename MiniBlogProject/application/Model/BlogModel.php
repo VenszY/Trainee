@@ -14,27 +14,28 @@
         }
 
         public function updateBlogById($updateData) {
-//            $prep = $this->connection->prepare('UPDATE Blog SET title=:newTitle, content=:newContent, date=:newDate, copyright=:newCopyright );
-//            $prep->bindParam(':title', $updateData['newTitle']);
-//            $prep->bindParam(':content', $updateData['newContent']);
-//            $prep->bindParam(':date', $updateData['newDate']);
-//            $prep->bindParam(':copyright', $updateData['newCopyright']);
-//            $prep->execute();
-//
-            $sql = "
-                UPDATE
-                    Blog
-                SET
-                    title = '".$updateData['newTitle']."',
-                    content = '".$updateData['newContent']."',
-                    date = '".$updateData['newDate']."',
-                    copyright = '".$updateData['newCopyright']."'
-                WHERE
-                    id = ".$updateData['id']."
-            ";
-
-            $this->connection->exec($sql);
+            $prep = $this->connection->prepare('UPDATE Blog SET title=:newTitle, content=:newContent, date=:newDate, copyright=:newCopyright WHERE id=:sameid ');
+            $prep->bindParam(':newTitle', $updateData['newTitle']);
+            $prep->bindParam(':newContent', $updateData['newContent']);
+            $prep->bindParam(':newDate', $updateData['newDate']);
+            $prep->bindParam(':newCopyright', $updateData['newCopyright']);
+            $prep->bindParam(':sameid', $updateData['id']);
+            $prep->execute();
             return true;
+//            $sql = "
+//                UPDATE
+//                    Blog
+//                SET
+//                    title = '".$updateData['newTitle']."',
+//                    content = '".$updateData['newContent']."',
+//                    date = '".$updateData['newDate']."',
+//                    copyright = '".$updateData['newCopyright']."'
+//                WHERE
+//                    id = ".$updateData['id']."
+//            ";
+//
+//            $this->connection->exec($sql);
+//            return true;
         }
 
         public function getAllBlogs() {
