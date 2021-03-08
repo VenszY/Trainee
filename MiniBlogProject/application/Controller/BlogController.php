@@ -3,6 +3,7 @@
 
     class BlogController {
 
+        private $path;
         private $blogModel;
 
         public function __construct(){
@@ -10,9 +11,9 @@
         }
 
         public function chosenView($innerView) {
-            $path = VIEW_PATH . $innerView . 'View.php';
+            $this->path = VIEW_PATH . $innerView . 'View.php';
             require_once VIEW_PATH . "MenuView.html";
-            require_once $path;
+            require_once $this->path;
 
         }
 
@@ -50,7 +51,6 @@
                     ];
                     $result = $this->blogModel->filterByDate($filterData);
                     return $result;
-                    require_once VIEW_PATH . "UpdateBlogView.php";
                 } else {
                     $filterData = [
                         'dateFrom' => $_GET['dateFrom'],
@@ -89,6 +89,6 @@
     }
 
     $blogInstance = new BlogController();
-
+//    $blogInstance->filterDate();
     $blogInstance->addBlogs();
     $blogInstance->updateBlogs();

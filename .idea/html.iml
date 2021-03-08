@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/laminas/laminas-escaper" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/laminas/laminas-zendframework-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpspec/prophecy" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/kint-php/kint" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/mikey179/vfsstream" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/resource-operations" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/codeigniter4/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/ci-news/vendor/nikic/php-parser" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
